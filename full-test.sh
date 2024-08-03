@@ -4,6 +4,13 @@
 # steps described in https://github.com/cu-ecen-5013/assignment-autotest/blob/master/README.md#running-tests
 set -e
 
+# Correction for:
+#               /usr/libexec/sftp-server: not found
+#               scp: Connection closed
+# alias scp='scp -O' (SCOPE)
+# Add custom_bin to PATH (scp: /usr/bin/scp -O "$@")
+export PATH=~/custom_bin:$PATH
+
 cd `dirname $0`
 test_dir=`pwd`
 echo "starting test with SKIP_BUILD=\"${SKIP_BUILD}\" and DO_VALIDATE=\"${DO_VALIDATE}\""
